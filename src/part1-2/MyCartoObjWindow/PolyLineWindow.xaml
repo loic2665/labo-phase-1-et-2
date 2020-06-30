@@ -1,0 +1,119 @@
+﻿<Window
+    x:Class="MyCartoObjWindow.PolyLineWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MyCartoObjWindow"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    Title="PolyLineWindow"
+    Width="450"
+    Height="501.333"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel Margin="0,0,0,60">
+            <Label
+                x:Name="PolylineTitle"
+                Width="215"
+                Height="35"
+                Margin="0,0,229,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Editer une Polyline"
+                FontSize="20" />
+
+            <Border
+                Width="180"
+                Height="2"
+                HorizontalAlignment="Left"
+                Background="Black" />
+
+
+            <Rectangle Height="7" />
+            <Label Content="Nom" />
+            <Border
+                Width="54"
+                Height="2"
+                HorizontalAlignment="Left"
+                Background="Black" />
+            <Rectangle Height="7" />
+            <TextBox x:Name="PolyLineName" Margin="10,0,175,0" />
+
+
+
+
+
+
+            <Rectangle Height="7" />
+            <Label Content="Coordonnées" />
+            <Border
+                Width="75"
+                Height="2"
+                HorizontalAlignment="Left"
+                Background="Black" />
+            <Rectangle Height="7" />
+            <Label
+                Margin="10,0,0,0"
+                Content="Longitude"
+                FontSize="10" />
+            <TextBox x:Name="PolyLineLongitude" Margin="10,0,300,0" />
+            <Label
+                Margin="10,0,0,0"
+                Content="Latitude"
+                FontSize="10" />
+            <TextBox x:Name="PolyLineLatitude" Margin="10,0,300,0" />
+
+            <Rectangle Height="7" />
+            <Label Content="Propriétés" />
+            <Border
+                Width="75"
+                Height="2"
+                HorizontalAlignment="Left"
+                Background="Black" />
+            <Rectangle Height="7" />
+            <Label
+                Margin="10,0,0,0"
+                Content="Épaisseur"
+                FontSize="10" />
+            <Label
+                x:Name="PolyLineThicknessLabel"
+                Margin="10,0,0,0"
+                Content="5 px"
+                FontSize="10" />
+            <Slider
+                x:Name="PolyLineThicknessSlider"
+                Margin="10,0,300,0"
+                Maximum="50"
+                Minimum="5"
+                ValueChanged="PolyLineThicknessSlider_OnValueChanged"
+                Value="5" />
+
+            <Label Content="Couleur" />
+            <Border
+                Width="75"
+                Height="2"
+                HorizontalAlignment="Left"
+                Background="Black" />
+            <Rectangle Height="7" />
+            <xctk:ColorPicker x:Name="PolyLineColor" Margin="10,0,300,0">
+
+            </xctk:ColorPicker>
+
+        </StackPanel>
+        <Button
+            x:Name="CancelButton"
+            Height="20"
+            Margin="257,423,100,10"
+            Click="CancelButton_Click"
+            Content="Annuler" />
+
+        <Button
+            x:Name="SaveButton"
+            Height="20"
+            Margin="350,423,10,10"
+            Click="SaveButton_Click"
+            Content="Sauvegarder" />
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,161 @@
+﻿<Window
+    x:Class="MyCartoObjWindow.MapWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MyCartoObjWindow"
+    xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title=""
+    Width="1280"
+    Height="720"
+    mc:Ignorable="d">
+    <DockPanel>
+        <Menu Height="20" DockPanel.Dock="Top">
+            <MenuItem Header="Fichier">
+                <MenuItem x:Name="SaveSession" Header="Enregistrer" Click="SaveSession_Click" />
+                <MenuItem x:Name="LoadSession" Header="Ouvrir" Click="LoadSession_OnClickSession_Click" />
+                <Separator HorizontalAlignment="Stretch" />
+                <MenuItem Header="Quitter" />
+            </MenuItem>
+            <MenuItem Header="Affichage">
+                <MenuItem Header="Carte">
+                    <MenuItem Click="MapModeLabelMode_Click" Header="Label uniquement" />
+                    <MenuItem Click="MapModeAerialwithlabels_Click" Header="Hybride" />
+                    <MenuItem Click="MapModeAerialMode_Click" Header="Sattelite" />
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Import/Export">
+                <MenuItem Click="POIImport_Click" Header="Importer des POI" />
+                <MenuItem Click="POIExport_Click" Header="Exporter des POI" />
+
+                <Separator HorizontalAlignment="Stretch" />
+                <MenuItem Click="PolyImport_Click" Header="Importer un trajets" />
+                <MenuItem Click="PolyExport_Click" Header="Exporter un (des) trajet(s)" />
+            </MenuItem>
+            <MenuItem Header="Outils">
+                <MenuItem x:Name="OptionWindow" Header="Options" Click="OptionWindow_Click" />
+            </MenuItem>
+
+            <MenuItem Click="MapAboutDialog_Click" Header="A propos" />
+        </Menu>
+
+        <ToolBar x:Name="ToolBarButtons" DockPanel.Dock="Top">
+            <!--
+                Elle prendra la bonne hauteur
+                avec des elements dedans
+            -->
+            <Button
+                x:Name="NavActionButton"
+                Click="NavActionButton_Click"
+                Content="Navigation Carte" />
+            <Separator />
+            <!--<Label Content="Ajouter : " Foreground="#FF2A9912" />
+
+            <RadioButton
+                x:Name="AddPOIRadio"
+                Click="RadioAdd_Click"
+                Content="POI"
+                GroupName="RadioAddAction" />
+            <RadioButton
+                x:Name="AddLineRadio"
+                Click="RadioAdd_Click"
+                Content="Line"
+                GroupName="RadioAddAction" />
+            <RadioButton
+                x:Name="AddPolyRadio"
+                Click="RadioAdd_Click"
+                Content="Poly"
+                GroupName="RadioAddAction" />
+            <Separator />
+            <Label Content="Supprimer : " Foreground="#FFCD0F0F" />
+            <RadioButton
+                x:Name="RemovePOIRadio"
+                Click="RadioRemove_Click"
+                Content="POI"
+                GroupName="RadioRemoveAction" />
+            <RadioButton
+                x:Name="RemoveLineRadio"
+                Click="RadioRemove_Click"
+                Content="Line"
+                GroupName="RadioRemoveAction" />
+            <RadioButton
+                x:Name="RemovePolyRadio"
+                Click="RadioRemove_Click"
+                Content="Poly"
+                GroupName="RadioRemoveAction" />
+            -->
+            <ComboBox
+                x:Name="ComboType"
+                Width="80"
+                SelectionChanged="ComboType_SelectionChanged">
+                <ComboBoxItem Content="POI" IsSelected="True" />
+                <ComboBoxItem Content="Polyline" IsSelected="False" />
+                <ComboBoxItem Content="Polygon" IsSelected="False" />
+            </ComboBox>
+            <Separator />
+
+            <RadioButton
+                x:Name="AddActionRadio"
+                Click="RadioAdd_Click"
+                Content="Ajouter"
+                Foreground="#FF0AA618"
+                GroupName="RadioAction" />
+            <RadioButton
+                x:Name="EditActionRadio"
+                Click="RadioEdit_Click"
+                Content="Editer"
+                Foreground="#FFCD770F"
+                GroupName="RadioAction" />
+            <RadioButton
+                x:Name="RemoveActionRadio"
+                Click="RadioRemove_Click"
+                Content="Supprimer"
+                Foreground="#FFCD0F0F"
+                GroupName="RadioAction" />
+
+            <Separator />
+
+            <Button
+                x:Name="DeleteAllButton"
+                Background="Red"
+                Click="DeleteAllButton_Click"
+                Content="TOUT SUPPRIMER"
+                Foreground="White" />
+
+        </ToolBar>
+
+        <StatusBar
+            x:Name="statusBarMapWindow"
+            Height="20"
+            DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="statusText" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="205" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListBox
+                x:Name="MapListBox"
+                Grid.Column="0"
+                Height="Auto"
+                MouseDoubleClick="MapListBox_OnMouseDoubleClick" />
+            <GridSplitter Width="5" />
+            <m:Map
+                x:Name="myMap"
+                Grid.Column="1"
+                CredentialsProvider="AqYy0hZ4E_3YPzpHjwPePsWOIQWJpq6GSEP-h9-unSNJGNVD3S51JzaYmsK0yEXO"
+                Mode="Aerialwithlabels"
+                MouseDoubleClick="myMap_MouseDoubleClick"
+                MouseWheel="myMap_MouseWheel">
+                <m:MapPolyline x:Name="polylineWPF" />
+            </m:Map>
+        </Grid>
+    </DockPanel>
+</Window>
